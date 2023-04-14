@@ -2,16 +2,14 @@ extends layout
 
 block content
   h1= title
-  - let results = result
+  - let items = results
   div(class="container-fluid")
     div(class="row")
-      each item,index in results
+      each item,index in items
         div(class="col-sm-2",onClick=`buy(${index})`)
           p Color is #{item.elephant_color}
           p height is #{item.elephant_height}
           p Weight is #{item.elephant_weight}
-          p Length is #{item.elephant_length}
-
           //- Bonus details
           //- Bonus Logic
   script.
