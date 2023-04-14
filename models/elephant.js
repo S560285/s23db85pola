@@ -1,8 +1,8 @@
 const mongoose = require("mongoose")
 const elephantSchema = mongoose.Schema({
-    elephant_Color: String,
+    elephant_color: String,
     elephant_height: Number,
-    elephant_Weight: Number,
-    elephant_Length: Number 
+    elephant_weight: Number,
+    elephant_length: Number 
 })
 module.exports = mongoose.model("elephant", elephantSchema)

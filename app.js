@@ -39,7 +39,7 @@ async function recreateDB(){
  await elephant.deleteMany();
  let instance1 = new
 
- elephant({elephant_color:"red",elephant_height:100,elephant_Weight:200, elephant_Length:18});
+ elephant({elephant_color:"red",elephant_height:100,elephant_weight:200, elephant_length:18});
  instance1.save().then( () => {
 console.log('First Object is created');
  }).catch( (e) => { 
@@ -47,7 +47,7 @@ console.log('First Object is created');
   });
   let instance2 = new
 
-  elephant({elephant_color:"yellow",elephant_height:180,elephant_Weight:2599, elephant_Length:94});
+  elephant({elephant_color:"yellow",elephant_height:180,elephant_weight:2599, elephant_length:94});
   instance2.save().then( () => {
  console.log('Second Object is created');
   }).catch( (e) => { 
@@ -55,7 +55,7 @@ console.log('First Object is created');
    });
    let instance3 = new
 
-   elephant({elephant_color:"pink",elephant_height:130,elephant_Weight:500, elephant_Length:148});
+   elephant({elephant_color:"pink",elephant_height:130,elephant_weight:500, elephant_length:148});
    instance3.save().then( () => {
   console.log('Third Object is created');
    }).catch( (e) => { 

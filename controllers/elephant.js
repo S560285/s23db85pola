@@ -8,9 +8,28 @@ exports.elephant_detail = function(req, res) {
  res.send('NOT IMPLEMENTED: elephant detail: ' + req.params.id);
 };
 // Handle elephant create on POST.
-exports.elephant_create_post = function(req, res) {
- res.send('NOT IMPLEMENTED: elephant create POST');
-};
+exports.elephant_create_post = async function(req, res) {
+console.log(req.body)
+let document = new elephant();
+// We are looking for a body, since POST does not have query parameters.
+// Even though bodies can be in many different formats, we will be picky
+// and require that it be a json object
+// {"elephant_type":"goat", "cost":12, "size":"large"}
+document.elephant_color = req.body.elephant_color;
+document.elephant_height = req.body.elephant_height;
+document.elephant_weight = req.body.elephant_weight;
+document.elephant_length = req.body.elephant_length;
+try{
+     result = await document.save();
+    res.send(result);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
+    
+
 // Handle elephant delete form on DELETE.
 exports.elephant_delete = function(req, res) {
  res.send('NOT IMPLEMENTED: elephant delete DELETE ' + req.params.id);
