@@ -1,16 +1,22 @@
 extends layout
 block content
     h1= title
-    - let elephant_color = toShow.elephant_color
-    - let elephant_height = toShow.elephant_height
-    - let elephant_weight = toShow.elephant_weight
+    if(toShow == null)
+        h2 No instance to detail4 
+    else
+        - let elephant_color = toShow.elephant_color
+        - let elephant_height = toShow.elephant_height
+        - let elephant_weight = toShow.elephant_weight
+        - let Car_mileage = toShow.Car_mileage
+        - let Car_cost = toShow.Car_cost
         div
-            div.row(id="elephantAttr")
-                div(class="elephantAttr mr-3") elephant color is:
+            div.row(id="carAttr")
+                div(class="carAttr mr-3") car color is:
                 div #{elephant_color}
             div.row
-                div(class="elephantAttr mr-3") elephant height  is:
+                div(class="carAttr mr-3") car Model is:
                 div #{elephant_height}
             div.row
-                div(class="elephantAttr mr-3") elephant weight  is:
+                div(class="carAttr mr-3") car Title is:
                 div #{elephant_weight}
+            
