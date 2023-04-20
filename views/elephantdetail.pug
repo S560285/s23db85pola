@@ -1,0 +1,16 @@
+extends layout
+block content
+    h1= title
+    - let elephant_color = toShow.elephant_color
+    - let elephant_height = toShow.elephant_height
+    - let elephant_weight = toShow.elephant_weight
+        div
+            div.row(id="elephantAttr")
+                div(class="elephantAttr mr-3") elephant color is:
+                div #{elephant_color}
+            div.row
+                div(class="elephantAttr mr-3") elephant height  is:
+                div #{elephant_height}
+            div.row
+                div(class="elephantAttr mr-3") elephant weight  is:
+                div #{elephant_weight}
