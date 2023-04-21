@@ -1,24 +1,43 @@
+//- extends layout
+//- block content
+//-   h1= title
+//-   - let items = results
+
+
+//-   div(class="container-fluid")
+//-     div(class="row")
+//-       each item in items
+//-       - let destination = `dispatch(\"/elephant/update?id=${item._id}\")`
+//-         div(class="col-sm-2",onClick=`buy(${index})`)
+//-           button.btn( class="btn-primary ml-1", onclick= destination) Update
+//-   script.
+//-     function dispatch(path) {
+//-       window.location.href=path
+//-       }
+//-           p Color is #{item.elephant_color}
+//-           p height is #{item.elephant_height}
+//-           p Weight is #{item.elephant_weight}
+//-   script.
+//-     function buy(Items) {
+//-       Items = Items+1;
+//-       alert(`You Purchased Item ${Items}`);
+//-     }
 extends layout
 
 block content
   h1= title
-  - let items = results
+  -let items = results
   div(class="container-fluid")
-    div(class="row")
-      each item,index in items
-        div(class="col-sm-2",onClick=`buy(${index})`)
-          p Color is #{item.elephant_color}
-          p height is #{item.elephant_height}
-          p Weight is #{item.elephant_weight}
-          //- Bonus details
-          //- Bonus Logic
-  script.
-    function buy(Items) {
-      Items = Items+1;
-      alert(`You Purchased Item ${Items}`);
-    }
-
-
-
-
+   div(class="row m-1")
+    each item,index in items
+     - let destination = `dispatch(\"/elephant/update?id=${item._id}\")`
+     div(class="row-sm-2", class="m-1")
+       p Color is #{item.elephant_color}
+       p height is #{item.elephant_height}
+       p Weight is #{item.elephant_weight}
+        button.btn( class="btn-primary ml-1", onclick= destination) Update
+        script.
+          function dispatch(path){
+          window.location.href=path
+          }
     
