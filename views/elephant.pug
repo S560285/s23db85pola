@@ -1,43 +1,39 @@
-//- extends layout
-//- block content
-//-   h1= title
-//-   - let items = results
-
-
-//-   div(class="container-fluid")
-//-     div(class="row")
-//-       each item in items
-//-       - let destination = `dispatch(\"/elephant/update?id=${item._id}\")`
-//-         div(class="col-sm-2",onClick=`buy(${index})`)
-//-           button.btn( class="btn-primary ml-1", onclick= destination) Update
-//-   script.
-//-     function dispatch(path) {
-//-       window.location.href=path
-//-       }
-//-           p Color is #{item.elephant_color}
-//-           p height is #{item.elephant_height}
-//-           p Weight is #{item.elephant_weight}
-//-   script.
-//-     function buy(Items) {
-//-       Items = Items+1;
-//-       alert(`You Purchased Item ${Items}`);
-//-     }
 extends layout
 
 block content
   h1= title
+  - let items=results
+  div(class="container-fluid")
+  div(class="row")
+  each value,indexNo in items
+   let destination = `dispatch(\"/elephant/update?id=${item._id}\")`
+    div(class="col-sm-2" onclick=`buy(${indexNo})`)
+     p Name is #{value.elephant_name} 
+     p elephant, color is #{value.elephant_color}
+     p price value is #{value.elephant_price}
+     button.btn( class="btn-danger ml-1", onclick= destination) Update
+  script. 
+    function buy(indexNo)
+    {
+      alert(`You purchased Item ${indexNo+1}`)
+    }
+block content
+  h1= title
   -let items = results
+    - let destination2 = `dispatch(\"/elephant/create")`
+    button.btn( class="btn-success m1-1" onclick= destination2) Create
   div(class="container-fluid")
    div(class="row m-1")
-    each item,index in items
+    each item in items
      - let destination = `dispatch(\"/elephant/update?id=${item._id}\")`
-     div(class="row-sm-2", class="m-1")
-       p Color is #{item.elephant_color}
-       p height is #{item.elephant_height}
-       p Weight is #{item.elephant_weight}
-        button.btn( class="btn-primary ml-1", onclick= destination) Update
-        script.
-          function dispatch(path){
-          window.location.href=path
-          }
-    
+     div(class="row-sm-2", class="m-1") Item #{item.elephant_name}(#{item.elephant_color}) is #{item.elephant_price}
+      button.btn( class="btn-danger ml-1", onclick= destination) Update
+      button.btn( class="btn-danger ml-1", onclick= `dispatch(\"/elephant/delete?id=${item._id}\")`) Delete
+      button.btn( class="btn-danger ml-1", onclick= `dispatch(\"/elephant/detail?id=${item._id}\")`) Details 
+
+
+
+  script.
+   function dispatch(path){
+     window.location.href=path
+   }
